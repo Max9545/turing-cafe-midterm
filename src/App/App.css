@@ -17,10 +17,12 @@
   font-family: 'Pacifico', cursive;
   font-size: 50px;
 }
-div {
+.res-card {
   background-color: aliceblue;
 }
 
 .resy-container {
-  
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* width: 100%; */
 }
