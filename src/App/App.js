@@ -32,12 +32,25 @@ function App () {
       setNumber(event.target.value)
     }
   }
+
+  function handleSubmit(event) {
+    // event.preventDefault()
+    fetch('http://localhost:3001/api/v1/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name: name, date: date, time: time, number: number})
+    })
+    .then(res => res.json())
+    .then(data => setReservations(data))
+  }
   
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-          <form>
+          <form onSubmit={event => handleSubmit(event)}>
             <label>
               Name
               <input
@@ -74,17 +87,22 @@ function App () {
                 onChange={event => handleChange(event)}
               />
             </label>
+            <button>Make reservation</button>
           </form>
         </div>
         <div className='resy-container'>
-          {reservations && <section>{reservations.map(reservation => {
+          {reservations && 
+          <section>
+            {reservations.map(reservation => {
             return <div className='res-card'>
                     <h2>{reservation.name}</h2>
                     <p>{reservation.date}</p>
                     <p>{reservation.time}</p>
                     <p>{reservation.number}</p>
                    </div>
-          })}</section>}
+              }
+            )}
+          </section>}
         </div>
       </div>
     )
