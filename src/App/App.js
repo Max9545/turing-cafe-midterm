@@ -17,6 +17,13 @@ function App () {
   },[])
 
 
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/reservations')
+    .then(res => res.json())
+    .then(data => setReservations(data))
+  },[reservations])
+
+
   function handleChange(event) {
    
     if (event.target.name === 'name') {
@@ -34,7 +41,7 @@ function App () {
   }
 
   function handleSubmit(event) {
-    // event.preventDefault()
+    event.preventDefault()
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       headers: {
@@ -42,8 +49,8 @@ function App () {
       },
       body: JSON.stringify({name: name, date: date, time: time, number: number})
     })
-    .then(res => res.json())
-    .then(data => setReservations(data))
+    // .then(res => res.json())
+    // .then(data => setReservations(data))
   }
   
     return (
