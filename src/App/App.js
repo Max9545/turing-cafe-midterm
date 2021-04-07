@@ -52,6 +52,11 @@ function App () {
     // .then(res => res.json())
     // .then(data => setReservations(data))
   }
+
+  function deleteRes(event) {
+    console.log(event.target.id, 'hi')
+    fetch(`http://localhost:3001/api/v1/reservations/${event.target.id}`, { method: 'DELETE'})
+  }
   
     return (
       <div className="App">
@@ -106,6 +111,7 @@ function App () {
                     <p>{reservation.date}</p>
                     <p>{reservation.time}</p>
                     <p>{reservation.number}</p>
+                    <button id={reservation.id}onClick={event => deleteRes(event)}>Delete Me</button>
                    </div>
               }
             )}

@@ -3,6 +3,8 @@ describe('Res Maker', () => {
     cy.visit('http://localhost:3000')
     .get('h1').should('contain', 'Turing Cafe Reservations')
   })
+
+
   it('Make reservations', () => {
     cy.visit('http://localhost:3000')
     .get('input[name=name]').type('John')
@@ -10,7 +12,7 @@ describe('Res Maker', () => {
     .get('input[name=time]').type('7:30PM')
     .get('input[name=number]').type('9')
     .get('button').click()
-    .get('.res-card')
+    .get('.res-card').last()
     .get('h2').should('contain', 'John')
     .get('p')
     .should('contain', '11/2/21')
