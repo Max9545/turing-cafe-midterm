@@ -20,7 +20,14 @@ function App () {
 
         </div>
         <div className='resy-container'>
-          
+          {reservations && <section>{reservations.map(reservation => {
+            return <div>
+                    <h2>{reservation.name}</h2>
+                    <p>{reservation.date}</p>
+                    <p>{reservation.time}</p>
+                    <p>{reservation.number}</p>
+                   </div>
+          })}</section>}
         </div>
       </div>
     )
