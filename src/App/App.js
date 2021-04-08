@@ -40,8 +40,8 @@ function App () {
     }
   }
 
-  function handleSubmit(event) {
-    event.preventDefault()
+  function handleSubmit() {
+    // event.preventDefault()
     fetch('http://localhost:3001/api/v1/reservations', {
       method: 'POST',
       headers: {
@@ -62,14 +62,14 @@ function App () {
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-          <form onSubmit={event => handleSubmit(event)}>
+          <form onSubmit={handleSubmit}>
             <label>
               Name
               <input
                 name='name'
                 type='text'
                 value={name}
-                onChange={event => handleChange(event)}
+                onChange={handleChange}
               />
             </label>
             <label>
@@ -78,7 +78,7 @@ function App () {
                 name='date'
                 type='text'
                 value={date}
-                onChange={event => handleChange(event)}
+                onChange={handleChange}
               />
             </label>
             <label>
@@ -87,7 +87,7 @@ function App () {
                 name='time'
                 type='text'
                 value={time}
-                onChange={event => handleChange(event)}
+                onChange={handleChange}
               />
             </label>
             <label>
@@ -96,7 +96,7 @@ function App () {
                 name='number'
                 type='text'
                 value={number}
-                onChange={event => handleChange(event)}
+                onChange={handleChange}
               />
             </label>
             <button>Make reservation</button>

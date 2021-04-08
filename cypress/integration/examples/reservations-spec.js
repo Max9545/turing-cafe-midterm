@@ -4,7 +4,6 @@ describe('Res Maker', () => {
     .get('h1').should('contain', 'Turing Cafe Reservations')
   })
 
-
   it('Make reservations', () => {
     cy.visit('http://localhost:3000')
     .get('input[name=name]').type('John')
